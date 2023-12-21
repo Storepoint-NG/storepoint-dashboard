@@ -1,35 +1,61 @@
+"use client";
 import LoginInput from "@/components/LoginInput";
+import { signup_details } from "@/constant";
+import { signUpNewUser } from "@/constant/utils";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
-import React from "react";
+import { useState } from "react";
 
 function Signup() {
+  const supabase = createClientComponentClient();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    number: "",
+    confirmPassword: "",
+  });
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (form.name && form.email && form.password) {
+      if (form.password != form.confirmPassword) {
+        toast.error("Passwords don't match");
+        return;
+      }
+
+      signUpNewUser(form.email, form.password, form, supabase);
+    } else {
+      toast.error("All fields are required");
+    }
+  }
   return (
     <div className="p-3 py-5 flex flex-col items-center">
       <h1 className="text-xl font-bold text-center mt-5">
         Create your free account
       </h1>
       <div className="w-full mt-6 space-y-3">
-        <LoginInput
-          type="text"
-          label="First Name and Last Name"
-          placeholder="Type your firstname and lastname"
-        />
-        <LoginInput type="text" label="Phone Number" placeholder="8164475065" />
-        <LoginInput
-          type="text"
-          label="Your Business Email"
-          isPassword
-          placeholder="Type your email address"
-        />
-        <LoginInput
-          type="password"
-          label="Password"
-          isPassword
-          placeholder="Enter a strong password"
-        />
+        {signup_details.map(({ type, label, placeholder, name }) => (
+          <LoginInput
+            key={name}
+            type={type}
+            label={label}
+            placeholder={placeholder}
+            name={name}
+            value={form[name]}
+            handleChange={handleChange}
+          />
+        ))}
       </div>
 
-      <button className="mt-8 p-3 w-full bg-blue-500 rounded-md text-white font-medium text-sm">
+      <button
+        className="mt-8 p-3 w-full bg-blue-500 rounded-md text-white font-medium text-sm"
+        onClick={handleSubmit}
+      >
         Create My Account
       </button>
 

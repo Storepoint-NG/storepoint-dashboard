@@ -3,11 +3,18 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { toggle } from "@/redux/slices/sidebarSlice";
 import { add_new, back_icon, menu_icon, profile } from "../../public/assets";
+import { useUser } from "@supabase/auth-helpers-react";
+import { redirect } from "next/navigation";
 
 function Header() {
   const dispatch = useDispatch();
+  const user = useUser();
+
+  if (!user) {
+    redirect("/login", "replace");
+  }
   return (
-    <header className="">
+    <header className="sticky top-0 left-0 bg-white">
       <div className="flex flex-row items-center justify-between p-2">
         <Image
           className="w-10 h-12 ml-1"
