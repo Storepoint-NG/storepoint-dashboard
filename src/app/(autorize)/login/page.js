@@ -2,19 +2,29 @@
 import LoginInput from "@/components/LoginInput";
 import { signInWithEmail } from "@/constant/utils";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function Login() {
   const supabase = createClientComponentClient();
+  const router = useRouter();
+  const user = useUser();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      router.replace("/dashboard");
+    }
+  }, [user]);
   function handleSubmit(e) {
     e.preventDefault();
     if (form.email && form.password) {
-      signInWithEmail(form.email, form.password);
+      signInWithEmail(form.email, form.password, supabase, router);
     } else {
       toast.error("Email and Password is Required");
     }

@@ -3,11 +3,15 @@ import LoginInput from "@/components/LoginInput";
 import { signup_details } from "@/constant";
 import { signUpNewUser } from "@/constant/utils";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function Signup() {
   const supabase = createClientComponentClient();
+  const router = useRouter();
+  const user = useUser();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -15,6 +19,12 @@ function Signup() {
     number: "",
     confirmPassword: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      router.replace("/dashboard");
+    }
+  }, [user]);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,7 +38,7 @@ function Signup() {
         return;
       }
 
-      signUpNewUser(form.email, form.password, form, supabase);
+      signUpNewUser(form.email, form.password, form, supabase, router);
     } else {
       toast.error("All fields are required");
     }
