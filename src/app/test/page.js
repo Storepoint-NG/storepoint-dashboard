@@ -1,4 +1,7 @@
 "use client";
+
+import TestComp from "@/components/TestComp";
+
 function page() {
   function SquadPay() {
     const squadInstance = new squad({
@@ -17,7 +20,8 @@ function page() {
   }
   return (
     <div>
-      <button onClick={() => SquadPay()}>Load Modal</button>
+      {/* <button onClick={() => SquadPay()}>Load Modal</button> */}
+      <TestComp />
     </div>
   );
 }
