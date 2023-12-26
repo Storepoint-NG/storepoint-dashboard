@@ -8,32 +8,30 @@ import { toggle } from "@/redux/slices/sidebarSlice";
 
 function Sidebar() {
   const sidebarToggle = useSelector((state) => state.sidebar);
-  const [select, setSelect] = useState("Dashboard");
+  const [select, setSelect] = useState("Home");
   const dispatch = useDispatch();
   return (
     <div
       className={cn(
-        "w-full absolute top-0 blur-0 h-full backdrop-blur-sm flex gap-x-4 z-10",
+        "w-full fixed  top-12 blur-0 h-full backdrop-blur-s bg-black/30 flex gap-x-4",
         !sidebarToggle && "hidden"
       )}
       onClick={() => dispatch(toggle())}
     >
-      <div className={cn("w-2/3 h-full shadow p-3 pl-0 bg-white")}>
-        <div className="flex flex-col gap-2">
-          {sidebarItems.map(({ title, icon }) => (
+      <div className={cn("w-5/6 h-full shadow p-3 bg-gray-100 ")}>
+        <div className="flex flex-col gap-2 first-letter:">
+          {sidebarItems.map(({ title, icon, link }) => (
             <Section
               key={title}
               title={title}
               icon={icon}
-              color={title == select && "text-teal-600"}
+              link={link}
+              selected={title === select}
               setSelect={setSelect}
             />
           ))}
         </div>
       </div>
-      <p className="mt-2  font-semibold rounded-full bg-black text-white p-1 px-2 h-fit">
-        X
-      </p>
     </div>
   );
 }

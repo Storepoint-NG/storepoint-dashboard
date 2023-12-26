@@ -4,7 +4,7 @@ import { dash_cards } from "@/constant";
 
 export default function Dashboard() {
   return (
-    <main className=" bg-gray-50">
+    <main className=" ">
       <div className="p-2 px-8 flex flex-col items-center ">
         <div className="w-full mt-3  font-semibold text-center">
           Welcome To Kemist

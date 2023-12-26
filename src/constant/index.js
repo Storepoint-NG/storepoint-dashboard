@@ -1,13 +1,33 @@
-import { home_icon } from "../../public/assets";
+import {
+  HomeOutlined,
+  SettingFilled,
+  SignalFilled,
+  TagFilled,
+} from "@ant-design/icons";
 
 export const sidebarItems = [
-  { title: "Dashboard", icon: home_icon },
-  { title: "Orders", icon: home_icon },
-  { title: "Products", icon: home_icon },
-  { title: "Categories", icon: home_icon },
-  { title: "Collections", icon: home_icon },
-  { title: "Settings", icon: home_icon },
-  { title: "Reports", icon: home_icon },
+  { title: "Home", icon: <HomeOutlined />, link: "" },
+  { title: "Orders", icon: <TagFilled />, link: "orders" },
+  { title: "Products", icon: <TagFilled />, link: "products" },
+  { title: "Customers", icon: <TagFilled />, link: "custormers" },
+  { title: "Reports", icon: <SignalFilled />, link: "reports" },
+  { title: "Settings", icon: <SettingFilled />, link: "settings" },
+  { title: "Settings", icon: <SettingFilled />, link: "settings" },
+];
+
+export const create_store1 = [
+  {
+    name: "storeName",
+    placeholder: "Enter your store name here",
+    label: "Store Name",
+  },
+  {
+    name: "phoneNumber",
+    placeholder: "Enter your phone number here",
+    label: "Phone Number",
+  },
+  { name: "country", placeholder: "Nigeria", label: "Country" },
+  { name: "currency", placeholder: "NGN", label: "Currency" },
 ];
 
 export const signup_details = [

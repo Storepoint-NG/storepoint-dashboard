@@ -1,21 +1,20 @@
-import Image from "next/image";
 import React from "react";
-import { home_icon } from "../../public/assets";
 import cn from "classnames";
+import Link from "next/link";
 
-function Section({ title, icon, color, setSelect }) {
+function Section({ title, icon, selected, setSelect, link }) {
   return (
-    <div
+    <Link
+      href={link}
       onClick={() => setSelect(title)}
       className={cn(
-        "flex flex-row gap-3 items-center  py-3 border-l-4 cursor-pointer",
-        color && "bg-gray-200/20  border-teal-600",
-        !color && "border-transparent"
+        "flex gap-5 items-center font-semibold p-2 py-3 border-[0.2px]  border-opacity-20 rounded-md",
+        selected && "bg-white"
       )}
     >
-      {/* <Image src={home_icon} className="ml-3" alt="icon" /> */}
-      <p className={cn(color, "font-semibold text-[1.1rem] ml-3")}>{title}</p>
-    </div>
+      {icon}
+      <p className={cn("")}>{title}</p>
+    </Link>
   );
 }
 

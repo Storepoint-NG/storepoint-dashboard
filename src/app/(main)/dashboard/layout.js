@@ -5,9 +5,11 @@ import Script from "next/script";
 export default function MainLayout({ children }) {
   return (
     <>
-      <Sidebar />
       <Header />
-      {children}
+      <div className="bg-zinc-100 relative">
+        <Sidebar />
+        {children}
+      </div>
       {/* <Script src="https://checkout.squadco.com/widget/squad.min.js" /> */}
     </>
   );
