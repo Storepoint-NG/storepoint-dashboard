@@ -1,33 +1,75 @@
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { create_store1 } from "@/constant";
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import Details from "./Details";
+import toast from "react-hot-toast";
+import Template from "./Template";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import random from "random-string-generator";
+import { useRouter } from "next/navigation";
 
 export default function CreateStore() {
-  return (
-    <div className="px-3 h-screen flex items-center justify-center">
-      <div className="flex flex-col w-full border shadow items-center p-2 py-8">
-        <h1 className="text-xl font-semibold">Enter the store details</h1>
-        <div className="mt-5 w-full flex flex-col gap-3">
-          {create_store1.map(({ name, placeholder, label }) => (
-            <div key={name} className="flex flex-col gap-2 w-full">
-              <label htmlFor="">{label}</label>
-              <input
-                type="text"
-                placeholder={placeholder}
-                className="w-full outline-none p-2 border  rounded-md"
-              />
-            </div>
-          ))}
-        </div>
+  const [form, setForm] = useState({
+    storeName: "",
+    phoneNumber: "",
+    country: "",
+    currency: "",
+  });
+  const [inputs, setInputs] = useState(false);
+  const router = useRouter();
+  const supabase = createClientComponentClient();
 
-        <Link
-          href="/create-store/template"
-          className="flex items-center font-semibold gap-2 p-3 px-7 bg-black text-white rounded-md mt-7"
-        >
-          <p>Choose Template</p>
-          <ArrowRightIcon style={{ fontWeight: "bold" }} />
-        </Link>
-      </div>
-    </div>
+  const createStore = async (temp) => {
+    const storeId = random(6).toLowerCase();
+
+    const toastId = toast.loading("Creating Store");
+
+    const { error } = await supabase.from("stores").insert({
+      store_id: storeId,
+      store_name: form.storeName,
+      country: form.country,
+      currency: form.currency,
+      contact: form.phoneNumber,
+      template: "default",
+    });
+
+    toast.remove(toastId);
+
+    if (error) {
+      toast.error("Unable to create store. Try again");
+      console.log("error", error);
+      return;
+    }
+
+    // Take to dashboard
+    router.push(`/store/${storeId}`);
+  };
+
+  const confirmInputs = () => {
+    // const done = true;
+    for (let val in form) {
+      if (form[val] === "") {
+        toast.error("Inputs not complete");
+        return;
+      }
+    }
+    setInputs(true);
+  };
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <>
+      {!inputs ? (
+        <Details
+          form={form}
+          handleChange={handleChange}
+          confirmInputs={confirmInputs}
+        />
+      ) : (
+        <Template createStore={createStore} />
+      )}
+    </>
   );
 }

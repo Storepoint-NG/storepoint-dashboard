@@ -36,6 +36,12 @@ export async function signUpNewUser(email, password, form, supabase, router) {
   const { data, error } = await supabase.auth.signUp({
     email: email,
     password: password,
+    options: {
+      data: {
+        username: form.name,
+        phone: form.number,
+      },
+    },
   });
   toast.dismiss(toastId);
   if (error) {
@@ -91,4 +97,22 @@ export const ensureUserProfile = async (user, form, supabase) => {
       console.error("Error while creating profile", error);
     }
   }
+};
+
+export const getFirstName = (user) => {
+  if (!user) return;
+  const name = user?.user_metadata.username;
+  const firstname = name.split(" ")[0];
+  return firstname;
+};
+
+export const getShortName = (name) => {
+  if (!name) return;
+  const words = name.split(" ");
+  let firstletter = "";
+  for (let i = 0; i < 2; i++) {
+    if (i == words.length) return firstletter;
+    firstletter += words[i][0];
+  }
+  return firstletter;
 };

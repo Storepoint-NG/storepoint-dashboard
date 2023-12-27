@@ -18,7 +18,7 @@ function Login() {
 
   useEffect(() => {
     if (user) {
-      router.push("/dashboard");
+      router.push("/");
     }
   }, [user]);
   function handleSubmit(e) {
