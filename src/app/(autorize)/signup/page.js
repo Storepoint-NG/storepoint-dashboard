@@ -22,7 +22,7 @@ function Signup() {
 
   useEffect(() => {
     if (user) {
-      router.replace("/dashboard");
+      router.push("/");
     }
   }, [user]);
 

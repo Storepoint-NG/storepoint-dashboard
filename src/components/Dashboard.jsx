@@ -1,5 +1,5 @@
+"use client";
 import Card from "@/components/Card";
-import Sidebar from "@/components/Sidebar";
 import { dash_cards } from "@/constant";
 
 export default function Dashboard() {
@@ -9,6 +9,7 @@ export default function Dashboard() {
         <div className="w-full mt-3  font-semibold text-center">
           Welcome To Kemist
         </div>
+
         {/* cards */}
         <div className="mt-5 flex flex-col gap-y-5">
           {dash_cards.map(({ title, desc, linkText, icon }) => (

@@ -10,7 +10,7 @@ export async function signInWithEmail(email, password, supabase, router) {
   if (data?.user) {
     toast.success("Login successfully");
     console.log("data", data);
-    router.push("/dashboard");
+    router.push("/");
   } else {
     toast.error("Unable to Login");
     if (error.message === "Invalid login credentials") {

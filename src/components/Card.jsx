@@ -1,6 +1,5 @@
-import Image from "next/image";
+
 import React from "react";
-import { home_icon } from "../../public/assets";
 
 function Card({ title, desc, linkText, icon }) {
   return (
