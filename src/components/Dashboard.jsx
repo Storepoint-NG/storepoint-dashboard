@@ -1,6 +1,4 @@
 "use client";
-import Card from "@/components/Card";
-import { dash_cards } from "@/constant";
 import { double_decks } from "../../public/assets";
 import { EyeOutlined } from "@ant-design/icons";
 import Image from "next/image";
@@ -13,8 +11,8 @@ export default function Dashboard() {
           <p>Current Balance</p>
           <EyeOutlined className="text-xl mb-1" />
         </div>
-        <h2 className="text-5xl">
-          ₦2,423<span className="text-3xl">.00</span>
+        <h2 className="text-4xl font-medium">
+          ₦20,423<span className="text-3xl">.00</span>
         </h2>
         <p className="mt-3 border border-white rounded-full p-1 px-3 w-fit">
           <span className="font-medium">24</span> sales today

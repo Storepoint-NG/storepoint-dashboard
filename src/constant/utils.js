@@ -116,3 +116,54 @@ export const getShortName = (name) => {
   }
   return firstletter;
 };
+
+// // retrive images from supabase
+// async function getImages() {
+//   const { data, error } = await supabase.storage
+//     .from("product_images")
+//     .list(user?.id + "/", {
+//       limit: 10,
+//       offset: 0,
+//       sortBy: { column: "name", order: "asc" },
+//     });
+
+//   // data [image1,image2,image3]
+//   if (data != null) {
+//     // updationg ui for images here
+//     setImages(data);
+//     // update form
+//     setForm({
+//       ...form,
+//       pictures: { user_id: user.id, images: data, cdn: CDNURL },
+//     });
+//   } else {
+//     alert("error loading images");
+//     console.log(error);
+//   }
+// }
+// delete image from supbase
+// async function deleteImage(imageName) {
+//   const { error } = await supabase.storage
+//     .from("product_images")
+//     .remove([user.id + "/" + imageName]);
+
+//   if (error) {
+//     toast.error(error);
+//   } else {
+//     getImages();
+//   }
+// }
+
+// const uploadImage = async (e) => {
+//   let file = e.target.files[0];
+
+//   const { data, error } = await supabase.storage
+//     .from("product_images")
+//     .upload(user.id + "/" + uuidv4(), file);
+
+//   if (data) {
+//     getImages();
+//   } else {
+//     console.log(error);
+//   }
+// };

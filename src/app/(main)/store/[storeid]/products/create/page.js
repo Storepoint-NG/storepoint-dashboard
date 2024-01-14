@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
 import PictureInput from "@/components/products/PictureInput";
 import { base_inputs, details_inputs } from "@/constant";
 import Input from "@/components/products/Input";
+import toast from "react-hot-toast";
 
 export default function AddProduct() {
   const supabase = createClientComponentClient();
   const user = useUser();
+  const router = useRouter();
   const styles = {
     title: "text-[1.2rem] font-semibold mb-2",
   };
@@ -19,22 +21,51 @@ export default function AddProduct() {
     title: "",
     category: "",
     desc: "",
-    pictures: [],
-    price: 0,
-    quantity: 0,
+    price: "",
+    quantity: "",
   });
+  const [images, setImages] = useState([]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSummit = (e) => {
-    console.log(form);
-    return;
+  const handleSummit = async () => {
+    // ensure all fileds are not empty
+    function nonEmpty(obj) {
+      return Object.values(obj).every((value) => value !== "");
+    }
+    if (!nonEmpty(form) || images.length == 0 || !storeid) {
+      toast.error("Ensure All Inputs are filled");
+      return;
+    }
+    const toastId = toast.loading("Creating Store");
+    // Send to supbase
+    const { error } = await supabase.from("products").insert({
+      title: form.title,
+      description: form.desc,
+      category: form.category,
+      price: form.price,
+      quantity: form.quantity,
+      images: images,
+      store_id: storeid,
+    });
+    toast.remove(toastId);
+
+    if (error) {
+      toast.error("Cannot create product. Try again");
+      console.log("error", error);
+      return;
+    }
+
+    // successful
+    toast.success("Product created successfully 🎉");
+    // send to product page
+    router.push(`/store/${storeid}/products`);
   };
 
   return (
-    <main className="p-2 px-3">
+    <main className="p-2 px-3 flex flex-col">
       <h1 className="text-3xl font-mono font-semibold">Add New Product</h1>
 
       <div className="mt-4 flex flex-col gap-y-4">
@@ -54,7 +85,11 @@ export default function AddProduct() {
         {/* pictures */}
         <div>
           <h3 className={styles.title}>Pictures</h3>
-          <PictureInput supabase={supabase} user={user} />
+          <PictureInput
+            supabase={supabase}
+            images={images}
+            setImages={setImages}
+          />
         </div>
 
         {/* details */}
@@ -71,12 +106,12 @@ export default function AddProduct() {
         </div>
       </div>
       {/* submit buttons */}
-      <button
-        className="mt-4 mb-5 bg-black/80 hover:bg-black p-4 font-bold text-white  rounded-md"
+      <div
+        className="mt-5 mb-5 bg-black/80 hover:bg-black p-4 font-bold text-white  rounded-md ml-auto mr-2 w-fit"
         onClick={handleSummit}
       >
         Create Product
-      </button>
+      </div>
     </main>
   );
 }
