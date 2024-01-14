@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Script from "next/script";
@@ -10,6 +11,7 @@ export default function MainLayout({ children }) {
         <Sidebar />
         {children}
       </div>
+      <Footer />
       {/* <Script src="https://checkout.squadco.com/widget/squad.min.js" /> */}
     </>
   );

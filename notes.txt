@@ -1,37 +1,6 @@
 https://www.stickk.com/
 https://www.quora.com/How-do-I-overcome-procrastination-when-I-dont-have-an-external-deadline 
 
-Requiments: 
-1. Add, Edit and Remove product
-3. See all Products
-2. See total balance
-3. Transcation history
-4. Link to e
 
 
-https://squadco.com/hackathon/register/
-https://www.zoho.com/commerce/?zsrc=fromproduct&serviceurl=%2Fv1%2Fcreatestore
 
-
-_____________________________________________
-
-The name of our solution is Storepoint. Storepoint allow small business and local shop owners to create fully fledged and functional online store/ecommerce websites literally under five mintues. Without worrying about Payments and Logistics.
-
-Storepoint handles Payments using Squad API by GT Bank and orders are delivered by our logistics partners active in their location. It gets even easier if the business sells digital products.
-
-What leverage does Storepoint offer?
-Usually for a business to have an online sales presence they need to hire developers and pay huge sums of money to build an ecommerce webiste or a recent university graduate who wants to start an online store, on low budget it is almost impossible. 
-
-Storepoint makes this process really fast and at a minimal cost. By inputing just their brand details and their products. We provide them with high grade online store registered under their domain name with payment, delivery and inventory management systems integrated. 
-
-Businesses each have a unique online store with their brand name, logo, and their domain name. Ready to start taking orders. 
-
-How does Storepoint make money?
-Our users pay a relatively small monthly subsciption fee to keep their sites up and run. Then we take a 5% cut from each transcation and product delivery processed on Storepoint.. 
-
-
-How do we ensure security on Storepoint?
-We use an email and password authentication setup to verify our platform user  also allowing us to store businesses data in seperate spaces. Storepoint authenticates and autorize users sessions with JWTs (JSON Web Tokens).
-
-This project is being built using modern web technologies like Javascript, React, and Next.js. You can view our progress at this URL.
-URL: storepoint.vercel.app

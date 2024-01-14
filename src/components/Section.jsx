@@ -7,7 +7,7 @@ function Section({ title, icon, selected, setSelect, link }) {
   const { storeid } = useParams();
   return (
     <Link
-      href={`${storeid}/${link}`}
+      href={`/store/${storeid}/${link}`}
       onClick={() => setSelect(title)}
       className={cn(
         "flex gap-5 items-center font-semibold p-2 py-3 border-[0.2px]  border-opacity-20 rounded-md",

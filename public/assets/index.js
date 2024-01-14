@@ -5,8 +5,17 @@ import menu_icon from "./menu-icon.svg";
 
 //
 import sal_template from "./sal-temp.png";
+import double_decks from "./double-decks.jpeg";
 
 // sidebar icons
 import home_icon from "./sidebar/home-icon.svg";
 
-export { add_new, back_icon, profile, home_icon, menu_icon, sal_template };
+export {
+  add_new,
+  back_icon,
+  profile,
+  home_icon,
+  double_decks,
+  menu_icon,
+  sal_template,
+};

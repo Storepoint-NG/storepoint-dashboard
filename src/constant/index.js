@@ -5,13 +5,43 @@ import {
   TagFilled,
 } from "@ant-design/icons";
 
+export const base_inputs = [
+  { label: "Title", placeholder: "Product name", type: "text", name: "title" },
+  {
+    label: "Category",
+    placeholder: "Product Type - Snack",
+    type: "text",
+    name: "category",
+  },
+  {
+    label: "Description",
+    placeholder: "A brief description of the product...",
+    type: "textarea",
+    name: "desc",
+  },
+];
+export const details_inputs = [
+  {
+    label: "Price",
+    placeholder: "Price per item",
+    type: "number",
+    name: "price",
+  },
+  {
+    label: "Quantity",
+    placeholder: "How many in stock",
+    type: "number",
+    name: "quantity",
+  },
+];
+
 export const sidebarItems = [
   { title: "Home", icon: <HomeOutlined />, link: "" },
   { title: "Orders", icon: <TagFilled />, link: "orders" },
   { title: "Products", icon: <TagFilled />, link: "products" },
   { title: "Customers", icon: <TagFilled />, link: "custormers" },
   { title: "Reports", icon: <SignalFilled />, link: "reports" },
-  { title: "Settings", icon: <SettingFilled />, link: "settings" },
+  { title: "Metris", icon: <SettingFilled />, link: "metrics" },
   { title: "Settings", icon: <SettingFilled />, link: "settings" },
 ];
 

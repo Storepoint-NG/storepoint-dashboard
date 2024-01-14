@@ -10,16 +10,17 @@ export default function Header() {
   const dispatch = useDispatch();
   const user = useUser();
 
-  if (!user) redirect("/login");
+  // TODO: Turn this off
+  // if (!user) redirect("/login");
 
   return (
-    <header className="flex justify-between bg-black/90 text-white p-2 items-center px-3 sticky top-0 gap-3 z-10">
+    <header className="flex justify-between bg-white text-black p-2 items-center px-3 sticky top-0 gap-3 z-10">
       <MenuOutlined
-        style={{ fontSize: "larger", color: "white" }}
+        style={{ fontSize: "larger", color: "black" }}
         onClick={() => dispatch(toggle())}
       />
       {/* Search */}
-      <div className="flex items-center bg-gray-800/50 border border-slate-50 border-opacity-30  p-1 rounded-md gap-2 pl-2 w-full">
+      <div className="flex items-center bg-gra-800/50 border border-black border-opacity-30  p-1 rounded-md gap-2 pl-2 w-full">
         <SearchOutlined className="opacity-50" />
         <input
           type="text text-xs"

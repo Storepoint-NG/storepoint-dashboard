@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    clientRouterFilter: false,
+  },
 
-module.exports = nextConfig
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "qgzeodsxjjpqfbghflzn.supabase.co",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
