@@ -5,9 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import ProductItems from "./products/ProductItems";
+import { addComma } from "@/lib";
+import toast from "react-hot-toast";
 
-export default function Dashboard() {
+export default function Dashboard({ data }) {
+  function getTotal(values) {
+    let total = 0;
+    values.forEach((value) => {
+      total += value.amount;
+    });
+    return total;
+  }
+
   const { storeid } = useParams();
+  if (!data) {
+    toast.error("uable to fetch");
+    return;
+  }
   return (
     <main className="p-2">
       <div className="w-full bg-purple-600 text-white rounded-md p-4 py-6 mt-3 flex flex-col gap-2">
@@ -16,10 +30,11 @@ export default function Dashboard() {
           <EyeOutlined className="text-xl mb-1 cursor-pointer" />
         </div>
         <h2 className="text-4xl font-medium">
-          ₦20,423<span className="text-3xl">.00</span>
+          ₦{addComma(getTotal(data.sales))}
+          <span className="text-3xl">.00</span>
         </h2>
         <p className="mt-3 border border-white rounded-full p-1 px-3 w-fit">
-          <span className="font-medium">24</span> sales today
+          <span className="font-medium">{data.sales.length}</span> sales today
         </p>
       </div>
       {/* orders */}
@@ -27,14 +42,16 @@ export default function Dashboard() {
         <div>
           <p>All pending orders</p>
           <p className="text-2xl font-medium break-all">
-            ₦20,000.<span className="text-xl">00</span>
+            ₦{addComma(getTotal(data.orders))}.
+            <span className="text-xl">00</span>
           </p>
         </div>
         <Link
           href={`/store/${storeid}/orders`}
           className="rounded-full whitespace-nowrap text-white p-3 px-3 bg-purple-700 font-semibold"
         >
-          Track Orders <span className=" font-medium">(36)</span>
+          Track Orders{" "}
+          <span className=" font-medium">({data.orders.length})</span>
         </Link>
       </div>
       {/* products */}
@@ -47,8 +64,8 @@ export default function Dashboard() {
         </div>
         {/* items */}
         <div className="flex flex-col gap-3 rounded-md mt-3">
-          {[1, 2, 3, 4].map((num) => (
-            <ProductItems key={num} />
+          {data.products.slice(0, 5).map((product) => (
+            <ProductItems key={product.product_id} {...product} />
           ))}
         </div>
       </div>
