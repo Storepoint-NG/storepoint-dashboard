@@ -8,3 +8,11 @@ export function getLink(image) {
 export function addComma(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+export function getTotal(values) {
+  let total = 0;
+  values.forEach((value) => {
+    total += value.amount;
+  });
+  return total;
+}

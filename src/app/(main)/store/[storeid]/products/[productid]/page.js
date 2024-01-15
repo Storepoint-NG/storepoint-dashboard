@@ -1,28 +1,43 @@
 import React from "react";
-import { double_decks } from "../../../../../../../public/assets";
 import Image from "next/image";
-import {
-  HistoryOutlined,
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+import { HistoryOutlined, RightOutlined } from "@ant-design/icons";
+import supabase from "@/supabase";
+import { getLink } from "@/lib";
+import DeleteProduct from "@/components/products/DeleteProduct";
 
-export default function ProductPage() {
+export default async function ProductPage({ params }) {
+  const { productid } = params;
+  if (!productid) return;
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("product_id", productid)
+    .single();
+
+  if (error) {
+    console.log("error", error);
+    return;
+  }
+
+  const { title, images, quantity, price, created_at } = data;
+
   return (
     <main className="p-2 px-3">
       <h1 className="text-3xl font-mono font-semibold">Product Summary</h1>
-      <h4 className="text-black/80">Id: 72202282</h4>
+      <h4 className="text-black/80 uppercase">Id: {productid.slice(0, 8)}</h4>
       {/* product overview */}
       <div className="flex flex-col rounded-md border bg-gray-50 shadow p-3  mt-2">
         {/* top */}
         <div className="flex items-center gap-4 w-full">
           <Image
-            src={double_decks}
+            src={getLink(images[0])}
             alt="img"
             className="rounded-full w-14 h-14 "
+            width={200}
+            height={200}
           />
           <div>
-            <p className="font-semibold">Double Deckers</p>
+            <p className="font-semibold">{title}</p>
             <p className="text-sm text-black/70">
               Last Updated On Apr 21, 2024
             </p>
@@ -32,9 +47,9 @@ export default function ProductPage() {
         {/* metrics */}
         <div className="flex items-center justify-between mt-3 px-2">
           {[
-            { label: "Price", num: 120, attr: "₦" },
-            { label: "In Stock", num: 11, attr: "Items " },
-            { label: "Total Amount", num: 1500, attr: "₦" },
+            { label: "Price", num: price, attr: "₦" },
+            { label: "In Stock", num: quantity, attr: "Items " },
+            { label: "Total Amount", num: price * quantity, attr: "₦" },
           ].map(({ label, num, attr }) => (
             <div className="" key={label}>
               <p className="font-semibold text-xl">
@@ -73,17 +88,7 @@ export default function ProductPage() {
         ))}
       </div>
 
-      {/* delete */}
-      <div className="flex items-center justify-between border-2 bg-red-50 p-2 text-red-600 mt-10">
-        <div className="flex gap-3 items-center">
-          <HistoryOutlined className="text-xl" />
-          <div>
-            <h4 className="font-semibold">Suspend Proudct</h4>
-            <p className="text-sm">Temporarily remove product from store</p>
-          </div>
-        </div>
-        <RightOutlined />
-      </div>
+      <DeleteProduct productid={productid} />
     </main>
   );
 }
