@@ -14,7 +14,7 @@ export default function Header() {
   // if (!user) redirect("/login");
 
   return (
-    <header className="flex justify-between bg-white text-black p-2 items-center px-3 sticky top-0 gap-3 z-10">
+    <header className="flex justify-between bg-gray-50 text-black p-2 items-center px-3 sticky top-0 gap-3 z-10">
       <MenuOutlined
         style={{ fontSize: "larger", color: "black" }}
         onClick={() => dispatch(toggle())}

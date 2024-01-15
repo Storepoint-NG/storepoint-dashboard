@@ -7,7 +7,7 @@ export default function MainLayout({ children }) {
   return (
     <>
       <Header />
-      <div className="bg-zinc-100 relative">
+      <div className="bg-zinc-100 relative pb-20">
         <Sidebar />
         {children}
       </div>
