@@ -1,12 +1,16 @@
 "use client";
 import { EyeOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import ProductItems from "./products/ProductItems";
 import { addComma, getDelivered } from "@/lib";
 import toast from "react-hot-toast";
 
-export default function Dashboard({ data }) {
+export default function Dashboard({ data, storeid }) {
+  if (!data) {
+    toast.error("unable to fetch");
+    return;
+  }
+
   function getTotal(values) {
     let total = 0;
     values.forEach((value) => {
@@ -15,13 +19,8 @@ export default function Dashboard({ data }) {
     return total;
   }
 
-  const pending = getDelivered(data.orders, "false");
+  const pending = getDelivered(data?.orders, "false");
 
-  const { storeid } = useParams();
-  if (!data) {
-    toast.error("unable to fetch");
-    return;
-  }
   return (
     <main className="p-2">
       <div className="w-full bg-purple-600 text-white rounded-md p-4 py-6 mt-3 flex flex-col gap-2 relative">

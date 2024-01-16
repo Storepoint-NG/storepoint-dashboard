@@ -25,12 +25,12 @@ export default function Home() {
         .eq("store_owner_id", user.id);
 
       if (error) {
-        console.log("error", error);
+        // console.log("error", error);
         return;
       }
 
       if (data) {
-        console.log("shops", data);
+        // console.log("shops", data);
         setShops(data);
       }
     };

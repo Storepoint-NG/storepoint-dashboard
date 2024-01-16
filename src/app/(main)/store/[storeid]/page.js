@@ -17,5 +17,5 @@ export default async function Shop({ params }) {
   // TODO remove logs
   // --> Sales = cal Balance/ orders/ products
 
-  return <Dashboard data={data} />;
+  return <Dashboard data={data} storeid={storeid} />;
 }
