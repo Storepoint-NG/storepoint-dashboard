@@ -4,7 +4,7 @@ import Details from "./Details";
 import toast from "react-hot-toast";
 import Template from "./Template";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import random from "random-string-generator";
+import cryptoRandomString from "crypto-random-string";
 import { useRouter } from "next/navigation";
 
 export default function CreateStore() {
@@ -19,9 +19,12 @@ export default function CreateStore() {
   const supabase = createClientComponentClient();
 
   const createStore = async (temp) => {
-    const storeId = random(6).toLowerCase();
+    const storeId = await cryptoRandomString({
+      length: 6,
+      type: "alphanumeric",
+    }).toLowerCase();
 
-    const toastId = toast.loading("Creating Store");
+    const toastId = toast.loading("Creating Store. Please wait");
 
     const { error } = await supabase.from("stores").insert({
       store_id: storeId,
@@ -32,16 +35,14 @@ export default function CreateStore() {
       template: "default",
     });
 
-    toast.remove(toastId);
-
     if (error) {
       toast.error("Unable to create store. Try again");
-      console.log("error", error);
       return;
     }
 
     // Take to dashboard
     router.push(`/store/${storeId}`);
+    toast.remove(toastId);
   };
 
   const confirmInputs = () => {

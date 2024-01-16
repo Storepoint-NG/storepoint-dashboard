@@ -9,7 +9,8 @@ export default async function OrdersPage({ params }) {
   if (!storeid) return;
   const { data, error } = await supabase
     .from("orders")
-    .select("order_id,delivered,products_ordered,customer_details,amount");
+    .select("order_id,delivered,products_ordered,customer_details,amount")
+    .eq("store_id", storeid);
   if (error) return;
 
   const pending = getDelivered(data, "false");
