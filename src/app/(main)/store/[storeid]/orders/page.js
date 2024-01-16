@@ -1,5 +1,8 @@
 import supabase from "@/supabase";
 import Orders from "./Orders";
+import { getDelivered } from "@/lib";
+
+export const revalidate = 2;
 
 export default async function OrdersPage({ params }) {
   const { storeid } = params;
@@ -8,10 +11,7 @@ export default async function OrdersPage({ params }) {
     .from("orders")
     .select("order_id,delivered,products_ordered,customer_details,amount");
   if (error) return;
-  function getDelivered(orders, status) {
-    let items = orders.filter((order) => order.delivered === status);
-    return items;
-  }
+
   const pending = getDelivered(data, "false");
   const fulfilled = getDelivered(data, "true");
 

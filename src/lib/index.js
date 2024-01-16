@@ -16,3 +16,8 @@ export function getTotal(values) {
   });
   return total;
 }
+
+export function getDelivered(orders, status) {
+  let items = orders.filter((order) => order.delivered === status);
+  return items;
+}

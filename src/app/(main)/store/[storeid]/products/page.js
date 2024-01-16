@@ -2,6 +2,8 @@ import ProductOverview from "@/components/products/ProductOverview";
 import ProductItems from "@/components/products/ProductItems";
 import supabase from "@/supabase";
 
+export const revalidate = 4;
+
 export default async function Products({ params }) {
   const { storeid } = params;
   if (!storeid) return;

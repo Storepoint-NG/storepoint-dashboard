@@ -1,8 +1,7 @@
 import Dashboard from "@/components/Dashboard";
 import supabase from "@/supabase";
 
-export const revalidate = 300;
-
+export const revalidate = 4;
 export default async function Shop({ params }) {
   const { storeid } = params;
   if (!storeid) return;
@@ -10,7 +9,7 @@ export default async function Shop({ params }) {
   const { data, error } = await supabase
     .from("stores")
     .select(
-      "products (product_id, title, quantity,images,price),orders (delivered, amount),sales (amount)"
+      "products (product_id, title, quantity,images,price),orders (delivered, amount)"
     )
     .eq("store_id", storeid)
     .single();
