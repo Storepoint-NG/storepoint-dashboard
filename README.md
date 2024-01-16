@@ -1,6 +1,6 @@
-# Storepoint: E-Commerce Platform for Local Businesses
+# Storepoint: E-Commerce for SMEs
 
-Welcome to the Storepoint GitHub repository! Storepoint is an open-source e-commerce platform designed specifically for small businesses and local shop owners. Leveraging the power of Next.js for a seamless, fast, and responsive web experience, Storepoint aims to democratize online retail for small-scale entrepreneurs. Our integration with the Squad API by GTBank ensures secure and efficient payment processing, making online transactions smooth and trustworthy.
+Welcome to the Storepoint GitHub repository! Storepoint is an  e-commerce platform designed specifically for small businesses and local shop owners.  Our integration with the Squad API by GTBank ensures secure and efficient payment processing, making online transactions smooth and trustworthy.
 
 ## Features
 
@@ -25,15 +25,40 @@ Before you set up Storepoint, ensure you have the following:
 
 ### Installation
 
-1. **Clone the Repository**
+**Clone the Repository**
 
    ```bash
    git clone https://github.com/your-username/Storepoint.git
    cd Storepoint
    ```
-   ## Usage
 
-After installation, you can start adding your products, setting up categories, and customizing your storefront. For detailed instructions, please refer to our [User Guide](LINK_TO_USER_GUIDE).
+```markdown
+## Install Dependencies
+
+To install the necessary dependencies, run the following command in your terminal:
+
+```bash
+npm install
+```
+
+**Set Up Environment Variables**
+
+You need to set up your environment variables for the application to function correctly:
+
+1. Rename the `.env.example` file to `.env.local`.
+2. Open the `.env.local` file and update the values with your GTBank Squad API keys and other configurations as required.
+
+**Run the Development Server**
+
+After setting up your environment variables, you can start the development server:
+
+```bash
+npm run dev
+```
+
+Once the server is running, you can visit `http://localhost:3000` in your web browser to view the application.
+```
+
 
 ## Contributing
 
@@ -49,12 +74,8 @@ Storepoint is released under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-- The Storepoint Team
-- Contributors and supporters
-- Next.js Community
+- Adekomi Abdulhaleem, Haruna Faruk
 - GTBank for the Squad API
+- Next.js Community
 
----
-
-We hope Storepoint helps in empowering your business to reach new heights in the digital space. Happy selling!
 
