@@ -32,8 +32,7 @@ Before you set up Storepoint, ensure you have the following:
    cd Storepoint
    ```
 
-```markdown
-## Install Dependencies
+**Install Dependencies**
 
 To install the necessary dependencies, run the following command in your terminal:
 
@@ -57,8 +56,6 @@ npm run dev
 ```
 
 Once the server is running, you can visit `http://localhost:3000` in your web browser to view the application.
-```
-
 
 ## Contributing
 
