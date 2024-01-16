@@ -42,11 +42,11 @@ export default function Home() {
     <div className="py-7 pt-12 px-5">
       <div className="flex justify-between w-full">
         <h1 className="text-xl font-black text-black/80">Storepoint.</h1>
-        <div>
-          <p className="p-2 rounded-md bg-pink-500 text-white">
+        <Link href={"/logout"}>
+          <p className="p-2 rounded-md border border-purple-600  bg-pin-500 text-purple-500 font-bold">
             {getShortName(user?.user_metadata.username) || "HF"}
           </p>
-        </div>
+        </Link>
       </div>
 
       {/* main */}
@@ -56,7 +56,7 @@ export default function Home() {
         </h1>
         <Link
           href="/create-store"
-          className="flex gap-2 items-center justify-center font-semibold p-2 w-full rounded-md bg-black/80 text-sm text-white shadow-black"
+          className="flex gap-2 items-center justify-center font-semibold p-2 w-full rounded-md bg-blac/80 bg-purple-800/80 text-sm text-white shadow-black"
         >
           <PlusOutlined />
           <p>Create store</p>
@@ -72,7 +72,9 @@ export default function Home() {
             className="flex items-center justify-between group hover:bg-black/5 rounded-md py-2 px-2 cursor-pointer"
           >
             <div className="flex gap-3">
-              <p className="p-2 rounded-md bg-green-500 text-white">MS</p>
+              <p className="p-2 rounded-full bg-gree-500 text-green-500 border-green-500 border">
+                MS
+              </p>
               <div className="text-sm">
                 <p className="font-semibold">{store_name}</p>
                 <div>{store_id}.onstp.com</div>

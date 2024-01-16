@@ -4,7 +4,7 @@ import { BellOutlined, MenuOutlined, SearchOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { toggle } from "@/redux/slices/sidebarSlice";
 import { useUser } from "@supabase/auth-helpers-react";
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ export default function Header() {
   return (
     <header className="flex justify-between bg-gray-50 text-black p-2 items-center px-3 sticky top-0 gap-3 z-10">
       <MenuOutlined
+        className=""
         style={{ fontSize: "larger", color: "black" }}
         onClick={() => dispatch(toggle())}
       />
@@ -31,7 +32,12 @@ export default function Header() {
       {/* right */}
       <div className="flex gap-3 items-center">
         <BellOutlined style={{ fontSize: "larger" }} />
-        <p className="p-2 text-xs rounded-md bg-green-500 text-white">MS</p>
+        <Link
+          href="/"
+          className="p-2 text-xs rounded-full bg-gree-500 border border-purple-200 text-purple-500"
+        >
+          MS
+        </Link>
       </div>
     </header>
   );

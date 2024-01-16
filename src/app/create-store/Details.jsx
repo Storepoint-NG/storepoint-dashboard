@@ -25,7 +25,7 @@ export default function Details({ form, handleChange, confirmInputs }) {
 
         <button
           onClick={confirmInputs}
-          className="flex items-center font-semibold gap-2 p-3 px-7 bg-black text-white rounded-md mt-7"
+          className="flex items-center font-semibold gap-2 p-3 px-7 bg-purple-800 text-white rounded-md mt-7"
         >
           <p>Choose Template</p>
           <ArrowRightIcon style={{ fontWeight: "bold" }} />
