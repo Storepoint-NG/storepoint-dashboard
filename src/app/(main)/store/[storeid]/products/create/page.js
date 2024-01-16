@@ -107,7 +107,7 @@ export default function AddProduct() {
       </div>
       {/* submit buttons */}
       <div
-        className="mt-5 mb-5 bg-black/80 hover:bg-black p-4 font-bold text-white  rounded-md ml-auto mr-2 w-fit"
+        className="mt-5 mb-20 bg-black/80 hover:bg-black p-4 font-bold text-white  rounded-md ml-auto mr-2 w-fit"
         onClick={handleSummit}
       >
         Create Product

@@ -15,6 +15,7 @@ export default function CreateStore() {
     currency: "",
   });
   const [inputs, setInputs] = useState(false);
+  const [disable, setDisable] = useState(false);
   const router = useRouter();
   const supabase = createClientComponentClient();
 
@@ -24,7 +25,9 @@ export default function CreateStore() {
       type: "alphanumeric",
     }).toLowerCase();
 
-    const toastId = toast.loading("Creating Store. Please wait");
+    setDisable(true);
+
+    const toastId = toast.loading("Creating Store");
 
     const { error } = await supabase.from("stores").insert({
       store_id: storeId,
@@ -34,6 +37,7 @@ export default function CreateStore() {
       contact: form.phoneNumber,
       template: "default",
     });
+    toast.remove(toastId);
 
     if (error) {
       toast.error("Unable to create store. Try again");
@@ -42,7 +46,6 @@ export default function CreateStore() {
 
     // Take to dashboard
     router.push(`/store/${storeId}`);
-    toast.remove(toastId);
   };
 
   const confirmInputs = () => {
@@ -69,7 +72,7 @@ export default function CreateStore() {
           confirmInputs={confirmInputs}
         />
       ) : (
-        <Template createStore={createStore} />
+        <Template createStore={createStore} disable={disable} />
       )}
     </>
   );
