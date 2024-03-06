@@ -44,7 +44,7 @@ export default function Dashboard({ data, storeid }) {
         </Link>
       </div>
       {/* orders */}
-      <div className="flex items-center justify-between w-full mt-3 p-2 px-3 gap-3 rounded-md bg-gray-200">
+      <div className="flex items-center justify-between w-full mt-3 p-2 px-3 gap-3 rounded-md ">
         <div>
           <p>All pending orders</p>
           <p className="text-2xl font-medium break-all">
