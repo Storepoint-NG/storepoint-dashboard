@@ -29,7 +29,9 @@ export default function Input({
           placeholder={placeholder}
           className="p-3 outline-none border focus:border-black"
         >
-          <option disabled selected></option>
+          <option disabled selected>
+            Select product categrory
+          </option>
           {options?.map((opt) => (
             <option key={opt?.value} value={opt?.value}>
               {opt?.label}
