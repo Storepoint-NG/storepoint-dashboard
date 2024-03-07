@@ -11,14 +11,32 @@ export default function Details({ form, handleChange, confirmInputs }) {
           {create_store1.map(({ name, placeholder, label }) => (
             <div key={name} className="flex flex-col gap-2 w-full">
               <label htmlFor="">{label}</label>
-              <input
-                type="text"
-                placeholder={placeholder}
-                value={form[name]}
-                name={name}
-                onChange={handleChange}
-                className="w-full outline-none p-2 border  rounded-md"
-              />
+
+              {name == "currency" ? (
+                <select
+                  placeholder={placeholder}
+                  value={form[name]}
+                  name={name}
+                  onChange={handleChange}
+                  className="w-full outline-none p-2 border  rounded-md"
+                >
+                  <option selected="true" disabled="disabled">
+                    {" "}
+                    select a currency
+                  </option>
+                  <option value="NGN">Naira (NGN)</option>
+                  <option value="USD">Dollar (USD)</option>
+                </select>
+              ) : (
+                <input
+                  type="text"
+                  placeholder={placeholder}
+                  value={form[name]}
+                  name={name}
+                  onChange={handleChange}
+                  className="w-full outline-none p-2 border  rounded-md"
+                />
+              )}
             </div>
           ))}
         </div>
