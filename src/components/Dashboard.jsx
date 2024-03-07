@@ -1,5 +1,5 @@
 "use client";
-import { EyeOutlined } from "@ant-design/icons";
+import { EyeOutlined, ShareAltOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import ProductItems from "./products/ProductItems";
 import { addComma, getDelivered } from "@/lib";
@@ -19,6 +19,11 @@ export default function Dashboard({ data, storeid }) {
     return total;
   }
 
+  const copyStoreLink = () => {
+    navigator.clipboard.writeText(`https://onstp.vercel.app/${storeid}`);
+    toast.success("Store link copied.");
+  };
+
   const pending = getDelivered(data?.orders, "false");
 
   return (
@@ -35,12 +40,15 @@ export default function Dashboard({ data, storeid }) {
         <p className="mt-3 border border-white rounded-full p-1 px-3 w-fit">
           <span className="font-medium">{data.orders.length}</span> sales today
         </p>
+
+        <button onClick></button>
         <Link
-          href={`https://onstp.vercel.app/${storeid}`}
-          target="_blank"
-          className="absolute right-4 top-6 p-2 text-sm bg-purple-700 rounded-full font-mono"
+          href="#"
+          // target="_blank"
+          onClick={copyStoreLink}
+          className="absolute right-4 flex items-center gap-2 top-6 p-2 text-sm bg-purple-700 rounded-full font-mono"
         >
-          View Store
+          <ShareAltOutlined fontSize={30} /> Share
         </Link>
       </div>
       {/* orders */}
@@ -55,11 +63,12 @@ export default function Dashboard({ data, storeid }) {
           href={`/store/${storeid}/orders`}
           className="rounded-full whitespace-nowrap text-white p-3 px-3 bg-purple-700 font-semibold"
         >
-          Track Orders <span className=" font-medium">({pending.length})</span>
+          View Orders <span className=" font-medium">({pending.length})</span>
         </Link>
       </div>
+
       {/* products */}
-      <div className=" h-full mt-3 p-1">
+      <div className=" h-full mt-5 p-1">
         <div className="flex items-center justify-between text-xl">
           <p className="font-semibold">My Products</p>
           <Link href={`/store/${storeid}/products`} className="text-sm pl-1">
@@ -68,9 +77,15 @@ export default function Dashboard({ data, storeid }) {
         </div>
         {/* items */}
         <div className="flex flex-col gap-3 rounded-md mt-3">
-          {data.products.slice(0, 5).map((product) => (
-            <ProductItems key={product.product_id} {...product} />
-          ))}
+          {data.products.length == 0 ? (
+            <></>
+          ) : (
+            data.products
+              .slice(0, 5)
+              .map((product) => (
+                <ProductItems key={product.product_id} {...product} />
+              ))
+          )}
         </div>
       </div>
     </main>

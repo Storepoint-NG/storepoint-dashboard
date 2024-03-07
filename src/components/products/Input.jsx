@@ -5,6 +5,7 @@ export default function Input({
   handleChange,
   name,
   form,
+  options,
 }) {
   return (
     <div className="flex flex-col gap-2">
@@ -20,6 +21,21 @@ export default function Input({
           rows="5"
           placeholder={placeholder}
         ></textarea>
+      ) : type == "select" ? (
+        <select
+          value={form[name]}
+          name={name}
+          onChange={handleChange}
+          placeholder={placeholder}
+          className="p-3 outline-none border focus:border-black"
+        >
+          <option disabled selected></option>
+          {options?.map((opt) => (
+            <option key={opt?.value} value={opt?.value}>
+              {opt?.label}
+            </option>
+          ))}
+        </select>
       ) : (
         <input
           type={type}

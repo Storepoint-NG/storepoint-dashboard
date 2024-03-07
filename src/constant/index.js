@@ -10,8 +10,46 @@ export const base_inputs = [
   {
     label: "Category",
     placeholder: "Product Type - Snack",
-    type: "text",
+    type: "select",
     name: "category",
+    options: [
+      {
+        value: "Accessories",
+        label: "Accessories",
+      },
+      {
+        value: "Baby products",
+        label: "Baby products",
+      },
+      {
+        value: "Computer",
+        label: "Computer",
+      },
+      {
+        value: "Fashion",
+        label: "Fashion",
+      },
+      {
+        value: "Food",
+        label: "Food",
+      },
+      {
+        value: "Grocery",
+        label: "Grocery",
+      },
+      {
+        value: "Health & Beauty",
+        label: "Health & Beauty",
+      },
+      {
+        value: "Home & Office",
+        label: "Home & Office",
+      },
+      {
+        value: "Phones & Tablets",
+        label: "Phones & Tablets",
+      },
+    ],
   },
   {
     label: "Description",
