@@ -25,7 +25,9 @@ export default function Details({ form, handleChange, confirmInputs }) {
                     select a currency
                   </option>
                   <option value="NGN">Naira (NGN)</option>
-                  <option value="USD">Dollar (USD)</option>
+                  <option value="USD" className="hidden">
+                    Dollar (USD)
+                  </option>
                 </select>
               ) : (
                 <input
