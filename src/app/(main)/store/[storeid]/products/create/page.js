@@ -39,7 +39,7 @@ export default function AddProduct() {
       toast.error("Ensure All Inputs are filled");
       return;
     }
-    const toastId = toast.loading("Creating Store");
+    const toastId = toast.loading("Creating Product");
     // Send to supbase
     const { error } = await supabase.from("products").insert({
       title: form.title,

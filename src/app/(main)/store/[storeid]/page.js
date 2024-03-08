@@ -1,4 +1,4 @@
-import Dashboard from "@/components/Dashboard";
+import Dashboard from "@/components/dashboard/Dashboard";
 import supabase from "@/supabase";
 
 export const revalidate = 4;
