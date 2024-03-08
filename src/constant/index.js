@@ -83,7 +83,7 @@ export const sidebarItems = [
   { title: "Settings", icon: <SettingFilled />, link: "settings" },
 ];
 
-export const create_store1 = [
+export const create_store_inputs = [
   {
     name: "storeName",
     placeholder: "Enter your store name here",
@@ -94,8 +94,7 @@ export const create_store1 = [
     placeholder: "Enter your phone number here",
     label: "Phone Number",
   },
-  { name: "country", placeholder: "Nigeria", label: "Country" },
-  { name: "currency", placeholder: "NGN", label: "Currency" },
+  { name: "location", placeholder: "E.g Yaba, Lagos", label: "Location" },
 ];
 
 export const signup_details = [
