@@ -20,7 +20,15 @@ const DashboardProducts = ({ storeid, data }) => {
               <ProductItems key={product.product_id} {...product} />
             ))
         ) : (
-          <></>
+          <div className="flex items-center flex-col gap-3">
+            <p>You have not added any product...</p>
+            <Link
+              href={`/store/${storeid}/products/create`}
+              className="border border-purple-500 p-2 rounded-md "
+            >
+              Add a Product
+            </Link>
+          </div>
         )}
       </div>
     </div>

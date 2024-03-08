@@ -62,7 +62,7 @@ export const details_inputs = [
   {
     label: "Price",
     placeholder: "Price per item",
-    type: "number",
+    type: "text",
     name: "price",
   },
   {
