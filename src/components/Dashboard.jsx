@@ -36,7 +36,7 @@ export default function Dashboard({ data, storeid }) {
           <span className="font-medium">{data.orders.length}</span> sales today
         </p>
         <Link
-          href={`https://onstp.vercel.app/${storeid}`}
+          href={`https://${storeid}.storepoint.online`}
           target="_blank"
           className="absolute right-4 top-6 p-2 text-sm bg-purple-700 rounded-full font-mono"
         >

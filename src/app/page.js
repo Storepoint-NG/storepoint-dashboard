@@ -77,7 +77,9 @@ export default function Home() {
               </p>
               <div className="text-sm">
                 <p className="font-semibold">{store_name}</p>
-                <div>{store_id}.onstp.com</div>
+                <p className="text-black/60 text-xs">
+                  {store_id}.storepoint.online
+                </p>
               </div>
             </div>
             <RightOutlined className="mr-2 hidden group-hover:flex" />
