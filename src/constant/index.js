@@ -10,8 +10,46 @@ export const base_inputs = [
   {
     label: "Category",
     placeholder: "Product Type - Snack",
-    type: "text",
+    type: "select",
     name: "category",
+    options: [
+      {
+        value: "Accessories",
+        label: "Accessories",
+      },
+      {
+        value: "Baby products",
+        label: "Baby products",
+      },
+      {
+        value: "Computer",
+        label: "Computer",
+      },
+      {
+        value: "Fashion",
+        label: "Fashion",
+      },
+      {
+        value: "Food",
+        label: "Food",
+      },
+      {
+        value: "Grocery",
+        label: "Grocery",
+      },
+      {
+        value: "Health & Beauty",
+        label: "Health & Beauty",
+      },
+      {
+        value: "Home & Office",
+        label: "Home & Office",
+      },
+      {
+        value: "Phones & Tablets",
+        label: "Phones & Tablets",
+      },
+    ],
   },
   {
     label: "Description",
@@ -24,7 +62,7 @@ export const details_inputs = [
   {
     label: "Price",
     placeholder: "Price per item",
-    type: "number",
+    type: "text",
     name: "price",
   },
   {
@@ -45,7 +83,7 @@ export const sidebarItems = [
   { title: "Settings", icon: <SettingFilled />, link: "settings" },
 ];
 
-export const create_store1 = [
+export const create_store_inputs = [
   {
     name: "storeName",
     placeholder: "Enter your store name here",
@@ -56,8 +94,7 @@ export const create_store1 = [
     placeholder: "Enter your phone number here",
     label: "Phone Number",
   },
-  { name: "country", placeholder: "Nigeria", label: "Country" },
-  { name: "currency", placeholder: "NGN", label: "Currency" },
+  { name: "location", placeholder: "E.g Yaba, Lagos", label: "Location" },
 ];
 
 export const signup_details = [

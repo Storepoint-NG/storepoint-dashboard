@@ -1,14 +1,14 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { create_store1 } from "@/constant";
-import Link from "next/link";
+import { create_store_inputs } from "@/constant";
 
 export default function Details({ form, handleChange, confirmInputs }) {
   return (
     <div className="px-3 h-screen flex items-center justify-center">
       <div className="flex flex-col w-full border shadow items-center p-2 py-8">
         <h1 className="text-xl font-semibold">Enter the store details</h1>
+
         <div className="mt-5 w-full flex flex-col gap-3">
-          {create_store1.map(({ name, placeholder, label }) => (
+          {create_store_inputs.map(({ name, placeholder, label }) => (
             <div key={name} className="flex flex-col gap-2 w-full">
               <label htmlFor="">{label}</label>
               <input

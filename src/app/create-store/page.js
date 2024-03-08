@@ -1,39 +1,41 @@
 "use client";
 import { useState } from "react";
-import Details from "./Details";
+import Details from "../../components/create-store/Details";
 import toast from "react-hot-toast";
-import Template from "./Template";
+import Template from "../../components/create-store/Template";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import cryptoRandomString from "crypto-random-string";
 import { useRouter } from "next/navigation";
+import { generateRandomString } from "@/lib";
 
 export default function CreateStore() {
   const [form, setForm] = useState({
     storeName: "",
     phoneNumber: "",
-    country: "",
-    currency: "",
+    location: "",
   });
+
   const [inputs, setInputs] = useState(false);
-  const [disable, setDisable] = useState(false);
+  const [disableSubmit, setDisableSubmit] = useState(false);
   const router = useRouter();
   const supabase = createClientComponentClient();
 
-  const createStore = async (temp) => {
-    const storeId = await cryptoRandomString({
-      length: 6,
-      type: "alphanumeric",
-    }).toLowerCase();
+  const getSubdomain = (storeId, storeName) => {
+    return (storeName.split(" ")[0] + "-" + storeId).toLowerCase();
+  };
 
-    setDisable(true);
+  const createStore = async (temp) => {
+    const storeId = generateRandomString(6);
+
+    setDisableSubmit(true);
+
+    const storeDomain = getSubdomain(storeId, form.storeName);
 
     const toastId = toast.loading("Creating Store");
 
     const { error } = await supabase.from("stores").insert({
-      store_id: storeId,
+      store_id: storeDomain,
       store_name: form.storeName,
-      country: form.country,
-      currency: form.currency,
+      location: form.location,
       contact: form.phoneNumber,
       template: "default",
     });
@@ -45,11 +47,12 @@ export default function CreateStore() {
     }
 
     // Take to dashboard
-    router.push(`/store/${storeId}`);
+    router.push(`/store/${storeDomain}`);
   };
 
+  // ensure all store details is filled
   const confirmInputs = () => {
-    // const done = true;
+    console.log(form);
     for (let val in form) {
       if (form[val] === "") {
         toast.error("Inputs not complete");
@@ -72,7 +75,7 @@ export default function CreateStore() {
           confirmInputs={confirmInputs}
         />
       ) : (
-        <Template createStore={createStore} disable={disable} />
+        <Template createStore={createStore} disableSubmit={disableSubmit} />
       )}
     </>
   );

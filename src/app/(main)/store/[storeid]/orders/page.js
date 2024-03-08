@@ -2,8 +2,6 @@ import supabase from "@/supabase";
 import Orders from "./Orders";
 import { getDelivered } from "@/lib";
 
-export const revalidate = 2;
-
 export default async function OrdersPage({ params }) {
   const { storeid } = params;
   if (!storeid) return;

@@ -39,7 +39,7 @@ export default function AddProduct() {
       toast.error("Ensure All Inputs are filled");
       return;
     }
-    const toastId = toast.loading("Creating Store");
+    const toastId = toast.loading("Creating Product");
     // Send to supbase
     const { error } = await supabase.from("products").insert({
       title: form.title,
@@ -107,7 +107,7 @@ export default function AddProduct() {
       </div>
       {/* submit buttons */}
       <div
-        className="mt-5 mb-20 bg-black/80 hover:bg-black p-4 font-bold text-white  rounded-md ml-auto mr-2 w-fit"
+        className="mt-5 mb-20 bg-black/80 hover:bg-black p-4 font-bold text-white cursor-pointer rounded-md ml-auto mr-2 w-fit"
         onClick={handleSummit}
       >
         Create Product

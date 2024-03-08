@@ -1,7 +1,7 @@
-import Dashboard from "@/components/Dashboard";
+import Dashboard from "@/components/dashboard/Dashboard";
 import supabase from "@/supabase";
 
-export const revalidate = 4;
+export const revalidate = 0;
 export default async function Shop({ params }) {
   const { storeid } = params;
   if (!storeid) return;
