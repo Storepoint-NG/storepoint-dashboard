@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ProductOverview({ total, storeid }) {
   return (
-    <div className="flex flex-col sm:flex-row sm: items-center justify-between w-full mt-3 p-3 px-3 gap-3 rounded-md bg-gray-200">
+    <div className="flex flex-col sm:flex-row sm:items-center  justify-between w-full mt-3 p-3 px-3 gap-3 rounded-md bg-gray-200">
       <div>
         <p>Total Amount</p>
         <p className="text-2xl font-semibold  break-all">
