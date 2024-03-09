@@ -65,7 +65,6 @@ export default function Home() {
 
       {/* stores */}
       <div className="flex flex-col w-full  gap-3 mt-7 ">
-        <h2 className="text-xl font-semibold mt-3 ">All stores</h2>
         {shops.map(({ id, store_name, store_id }) => (
           <Link
             href={`/store/${store_id}`}
