@@ -40,23 +40,23 @@ export default function Home() {
 
   return (
     <div className="py-7 pt-12 px-5">
-      <div className="flex justify-between w-full">
-        <h1 className="text-xl font-black text-black/80">Storepoint.</h1>
+      <div className="flex justify-between items-center w-full mb-8">
+        <h1 className="text-lg font-black  text-black/80">Storepoint.</h1>
         <Link href={"/logout"}>
-          <p className="p-2 rounded-md border border-purple-600  bg-pin-500 text-purple-500 font-bold">
+          <p className="p-1 rounded-md border border-purple-600  bg-pin-500 text-purple-500 font-bold">
             {getShortName(user?.user_metadata.username) || "HF"}
           </p>
         </Link>
       </div>
 
       {/* main */}
-      <div className="flex flex-col gap-3 mt-5">
+      <div className="flex flex-col sm:flex-row  sm:items-center justify-between gap-3 mt-5">
         <h1 className="font-semibold text-[1.4rem]">
           Welcome back, {getFirstName(user)}
         </h1>
         <Link
           href="/create-store"
-          className="flex gap-2 items-center justify-center font-semibold p-2 w-full rounded-md bg-blac/80 bg-purple-800/80 text-sm text-white shadow-black"
+          className="flex gap-2  items-center justify-center font-semibold p-2 w-full sm:w-fit px-4 rounded-md bg-blac/80 bg-purple-800/80 text-sm text-white shadow-black"
         >
           <PlusOutlined />
           <p>Create store</p>

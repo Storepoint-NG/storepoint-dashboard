@@ -13,7 +13,7 @@ function Sidebar() {
   return (
     <div
       className={cn(
-        "w-full fixed  top-12 blur-0 h-full backdrop-blur-s bg-black/30 flex gap-x-4",
+        "w-full fixed  top-12 blur-0 h-full backdrop-blur-s bg-black/30 flex gap-x-4 z-20",
         !sidebarToggle && "hidden"
       )}
       onClick={() => dispatch(toggle())}
