@@ -85,7 +85,7 @@ export default function Home() {
       </div>
 
       {/************************** PARTNERS ******************/}
-      <div className="mx-auto mt-28 max-w-screen-xl">
+      <div className="hidden mx-auto mt-28 max-w-screen-xl">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
           <div className="col-span-1 flex items-center justify-center md:col-span-2 lg:col-span-1">
             <svg
@@ -288,7 +288,7 @@ export default function Home() {
 
       {/********** TESTIMONIAL  ***********/}
 
-      <section className="bg-white dark:bg-gray-900">
+      <section className="hidden bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6 py-10">
           <h1 className="text-center text-3xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
             What vendor are saying
@@ -369,7 +369,7 @@ export default function Home() {
       </section>
 
       {/********** PRICING  ***********/}
-      <section className="bg-white dark:bg-gray-900">
+      <section className="hidden bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6 py-8">
           <h1 className="text-center text-3xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
             Pricing Plan
@@ -438,7 +438,7 @@ export default function Home() {
       </section>
 
       {/********** FAQs  ***********/}
-      <section className="bg-white dark:bg-gray-900">
+      <section className="hidden bg-white dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl px-6 py-10">
           <h1 className="text-center text-4xl font-semibold text-gray-800 dark:text-white">
             Frequently asked questions

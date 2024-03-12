@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useUser } from "@supabase/auth-helpers-react";
 
 const Header = () => {
   const user = useUser();
+  const [openSideMenu, setOpenSideMenu] = useState(false);
 
   return (
     <div className="relative flex flex-wrap items-center justify-between w-full bg-white group py-7 shrink-0">
@@ -44,7 +45,7 @@ const Header = () => {
       <div className="items-center hidden gap-8 md:flex">
         {user ? (
           <Link href="/store">
-            <button className="flex items-center text-sm font-normal text-gray-800 hover:text-gray-900 transition duration-300">
+            <button className="flex items-center px-7 py-3 text-sm font-semibold rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-300">
               View Store
             </button>
           </Link>
@@ -65,54 +66,95 @@ const Header = () => {
         )}
       </div>
       <button
-        onclick="(() => { this.closest('.group').classNameList.toggle('open')})()"
+        // onClick="(() => { this.closest('.group').classNameList.toggle('open')})()"
+        onClick={() => {
+          setOpenSideMenu(!openSideMenu);
+        }}
         className="flex md:hidden"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M3 8H21C21.2652 8 21.5196 7.89464 21.7071 7.70711C21.8946 7.51957 22 7.26522 22 7C22 6.73478 21.8946 6.48043 21.7071 6.29289C21.5196 6.10536 21.2652 6 21 6H3C2.73478 6 2.48043 6.10536 2.29289 6.29289C2.10536 6.48043 2 6.73478 2 7C2 7.26522 2.10536 7.51957 2.29289 7.70711C2.48043 7.89464 2.73478 8 3 8ZM21 16H3C2.73478 16 2.48043 16.1054 2.29289 16.2929C2.10536 16.4804 2 16.7348 2 17C2 17.2652 2.10536 17.5196 2.29289 17.7071C2.48043 17.8946 2.73478 18 3 18H21C21.2652 18 21.5196 17.8946 21.7071 17.7071C21.8946 17.5196 22 17.2652 22 17C22 16.7348 21.8946 16.4804 21.7071 16.2929C21.5196 16.1054 21.2652 16 21 16ZM21 11H3C2.73478 11 2.48043 11.1054 2.29289 11.2929C2.10536 11.4804 2 11.7348 2 12C2 12.2652 2.10536 12.5196 2.29289 12.7071C2.48043 12.8946 2.73478 13 3 13H21C21.2652 13 21.5196 12.8946 21.7071 12.7071C21.8946 12.5196 22 12.2652 22 12C22 11.7348 21.8946 11.4804 21.7071 11.2929C21.5196 11.1054 21.2652 11 21 11Z"
-            fill="black"
-          ></path>
-        </svg>
+        {openSideMenu ? (
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        ) : (
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.5 3C1.22386 3 1 3.22386 1 3.5C1 3.77614 1.22386 4 1.5 4H13.5C13.7761 4 14 3.77614 14 3.5C14 3.22386 13.7761 3 13.5 3H1.5ZM1 7.5C1 7.22386 1.22386 7 1.5 7H13.5C13.7761 7 14 7.22386 14 7.5C14 7.77614 13.7761 8 13.5 8H1.5C1.22386 8 1 7.77614 1 7.5ZM1 11.5C1 11.2239 1.22386 11 1.5 11H13.5C13.7761 11 14 11.2239 14 11.5C14 11.7761 13.7761 12 13.5 12H1.5C1.22386 12 1 11.7761 1 11.5Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        )}
       </button>
-      <div className="absolute flex md:hidden transition-all duration-300 ease-in-out flex-col items-start shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 rounded-2xl group-[.open]:max-h-64 top-full">
-        <a
-          className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
-        >
-          Product
-        </a>
-        <a
-          className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
-        >
-          Features
-        </a>
-        <a
-          className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
-        >
-          Pricing
-        </a>
-        <a
-          className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
-        >
-          Company
-        </a>
-        <button className="flex items-center text-sm font-normal text-black">
-          Log In
-        </button>
-        <button className="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-indigo-blue-100 text-indigo-blue-600 hover:bg-indigo-blue-600 hover:text-white transition duration-300">
-          Sign Up
-        </button>
-      </div>
+
+      {openSideMenu && (
+        <div className="absolute  flex md:hidden transition-all duration-300 ease-in-out flex-col items-start shadow-main justify-center w-full gap-3 overflow-hidden bg-white py-4 px-4 rounded-2xl max-h-64 top-full">
+          <a
+            className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
+            href="javascript:void(0)"
+          >
+            Product
+          </a>
+          <a
+            className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
+            href="javascript:void(0)"
+          >
+            Features
+          </a>
+          <a
+            className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
+            href="javascript:void(0)"
+          >
+            Pricing
+          </a>
+          <a
+            className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
+            href="javascript:void(0)"
+          >
+            Company
+          </a>
+
+          {user ? (
+            <Link href="/store">
+              <button className="flex items-center px-7 py-3 text-sm font-semibold rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-300">
+                View Store
+              </button>
+            </Link>
+          ) : (
+            <>
+              <Link href="/login">
+                <button className="flex items-center text-sm font-normal text-black">
+                  Log In
+                </button>
+              </Link>
+
+              <Link href="/signup">
+                <button className="flex items-center px-7 py-3 text-sm font-semibold rounded-lg bg-indigo-100 text-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-300">
+                  Sign Up
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };
