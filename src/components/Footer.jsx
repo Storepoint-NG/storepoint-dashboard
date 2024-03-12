@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import { Package, BookUser, Home, Tag, CircleEllipsis } from "lucide-react";
-
+import { Package, BookUser, BarChart, Home, Tag } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -13,7 +12,7 @@ export default function Footer() {
     { title: "Orders", icon: <Tag />, link: "orders" },
     { title: "Products", icon: <Package />, link: "products" },
     { title: "Customers", icon: <BookUser />, link: "customers" },
-    { title: "More", icon: <CircleEllipsis />, link: "more-options" },
+    { title: "Reports", icon: <BarChart />, link: "reports" },
   ];
   return (
     <footer className="fixed bottom-0 bg-white z-10 left-0 w-full sm:hidden">
