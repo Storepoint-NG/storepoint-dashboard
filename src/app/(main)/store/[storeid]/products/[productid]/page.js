@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { HistoryOutlined, RightOutlined } from "@ant-design/icons";
 import supabase from "@/supabase";
 import { getLink } from "@/lib";
@@ -21,6 +22,20 @@ export default async function ProductPage({ params }) {
 
   const { title, images, quantity, price, created_at } = data;
 
+  const productActions = [
+    {
+      icon: "",
+      text: "Update Product",
+      desc: "Last update 3/12/24",
+      link: `${productid}/update`,
+    },
+    { icon: "", text: "Sales History", desc: "Track sales record" },
+    {
+      icon: "",
+      text: "Set Reminder",
+      desc: "Update price and inventory reminder",
+    },
+  ];
   return (
     <main className="p-2 px-3">
       <h1 className="text-3xl font-mono font-semibold">Product Summary</h1>
@@ -63,29 +78,36 @@ export default async function ProductPage({ params }) {
       </div>
       {/* actions - update product,sales history, set reminder */}
       <div className="flex flex-col gap-y-4 mt-5">
-        {[
-          { icon: "", text: "Update Product", desc: "Last update 3/12/24" },
-          { icon: "", text: "Sales History", desc: "Track sales record" },
-          {
-            icon: "",
-            text: "Set Reminder",
-            desc: "Update price and inventory reminder",
-          },
-        ].map(({ icon, text, desc }) => (
-          <div
-            key={text}
-            className="flex items-center justify-between border-2 border-blue-200 bg-gray-50 p-2 text-black/80"
-          >
-            <div className="flex gap-3 items-center">
-              <HistoryOutlined className="text-xl" />
-              <div>
-                <h4 className="font-semibold">{text}</h4>
-                <p className="text-sm">{desc}</p>
+        {productActions?.map(({ icon, text, desc, link }) =>
+          link ? (
+            <Link key={text} href={link}>
+              <div className="flex items-center justify-between border-2 border-blue-200 bg-gray-50 p-2 text-black/80">
+                <div className="flex gap-3 items-center">
+                  <HistoryOutlined className="text-xl" />
+                  <div>
+                    <h4 className="font-semibold">{text}</h4>
+                    <p className="text-sm">{desc}</p>
+                  </div>
+                </div>
+                <RightOutlined />
               </div>
+            </Link>
+          ) : (
+            <div
+              key={text}
+              className="flex items-center justify-between border-2 border-blue-200 bg-gray-50 p-2 text-black/80"
+            >
+              <div className="flex gap-3 items-center">
+                <HistoryOutlined className="text-xl" />
+                <div>
+                  <h4 className="font-semibold">{text}</h4>
+                  <p className="text-sm">{desc}</p>
+                </div>
+              </div>
+              <RightOutlined />
             </div>
-            <RightOutlined />
-          </div>
-        ))}
+          )
+        )}
       </div>
 
       <DeleteProduct productid={productid} />

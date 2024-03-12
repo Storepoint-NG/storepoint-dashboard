@@ -35,10 +35,10 @@ export default function PictureInput({ supabase, images, setImages }) {
 
   return (
     <div className="flex gap-3">
-      {images.map((image) => (
+      {images?.map((image) => (
         <div className="relative" key={image.path}>
           <Image
-            src={CDNURL + image.fullPath}
+            src={CDNURL + image?.fullPath}
             alt="img"
             className="w-20 h-20 rounded-md shadow object-contain"
             width={200}

@@ -8,6 +8,7 @@ import Link from "next/link";
 
 export default function Header() {
   const dispatch = useDispatch();
+
   const user = useUser();
 
   // TODO: Turn this off
@@ -33,10 +34,11 @@ export default function Header() {
       <div className="flex gap-3 items-center">
         <BellOutlined style={{ fontSize: "larger" }} />
         <Link
-          href="/"
+          href="/store"
           className="p-2 text-xs rounded-full bg-gree-500 border border-purple-200 text-purple-500"
         >
-          MS
+          {user?.user_metadata?.username?.split(" ")[0][0]}
+          {user?.user_metadata?.username?.split(" ")[1][0]}
         </Link>
       </div>
     </header>

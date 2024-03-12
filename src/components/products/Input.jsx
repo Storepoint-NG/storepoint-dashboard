@@ -6,6 +6,7 @@ export default function Input({
   name,
   form,
   options,
+  value,
 }) {
   return (
     <div className="flex flex-col gap-2">
@@ -14,7 +15,7 @@ export default function Input({
       </label>
       {type == "textarea" ? (
         <textarea
-          value={form[name]}
+          defaultValue={value || form[name]}
           name={name}
           onChange={handleChange}
           className="p-3 outline-none border focus:border-black"
@@ -23,7 +24,7 @@ export default function Input({
         ></textarea>
       ) : type == "select" ? (
         <select
-          value={form[name]}
+          defaultValue={value || form[name]}
           name={name}
           onChange={handleChange}
           placeholder={placeholder}
@@ -41,7 +42,7 @@ export default function Input({
       ) : (
         <input
           type={type}
-          value={form[name]}
+          defaultValue={value || form[name]}
           name={name}
           onChange={handleChange}
           className="p-3 outline-none border focus:border-black"
