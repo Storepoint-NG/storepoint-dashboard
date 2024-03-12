@@ -286,6 +286,7 @@ export default function Home() {
         </div>
       </div>
 
+
       {/********** TESTIMONIAL  ***********/}
 
       <section className="hidden bg-white dark:bg-gray-900">
@@ -328,6 +329,7 @@ export default function Home() {
                 fugiat corrupti laudantium dolores reiciendis pariatur esse quod
                 nihil quia cupiditate debitis quisquam nemo, accusamus animi
                 explicabo? Architecto, unde laboriosam?
+
               </p>
 
               <div className="mt-8 flex flex-col items-center justify-center">
