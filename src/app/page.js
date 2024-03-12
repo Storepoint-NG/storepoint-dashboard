@@ -1,47 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { PlusOutlined, RightOutlined } from "@ant-design/icons";
-import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { getFirstName, getShortName } from "@/constant/utils";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AppHeader from "@/components/AppHeader";
 import AppFooter from "@/components/AppFooter";
 
 export default function Home() {
-  const supabase = createClientComponentClient();
-  const user = useUser();
-  const router = useRouter();
-  const [shops, setShops] = useState([]);
-  useEffect(() => {
-    if (!user) {
-      // router.push("/login");
-      return;
-    }
-
-    const fetchShops = async () => {
-      const { data, error } = await supabase
-        .from("stores")
-        .select(`id, store_name, store_id`)
-        .eq("store_owner_id", user.id);
-
-      if (error) {
-        // console.log("error", error);
-        return;
-      }
-
-      if (data) {
-        // console.log("shops", data);
-        setShops(data);
-      }
-    };
-
-    fetchShops();
-  }, []);
-
   return (
     <div>
       <div className="container flex flex-col mx-auto bg-white">
