@@ -27,7 +27,7 @@ const UpdateProduct = () => {
     quantity: "",
   });
 
-  const [images, setImages] = useState(data?.images || []);
+  const [images, setImages] = useState([]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,7 +36,6 @@ const UpdateProduct = () => {
   const handleSummit = async () => {
     // ensure all fileds are not empty
 
-    console.log(form);
     function nonEmpty(obj) {
       return Object.values(obj).every((value) => value !== "");
     }
@@ -73,9 +72,10 @@ const UpdateProduct = () => {
     if (productid) {
       getProductDetails(productid).then((res) => {
         setData(res);
+        setImages(res?.images);
       });
     }
-  }, [productid, data]);
+  }, []);
 
   return (
     <main className="p-2 px-3 flex flex-col">
