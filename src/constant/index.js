@@ -55,7 +55,7 @@ export const base_inputs = [
     label: "Description",
     placeholder: "A brief description of the product...",
     type: "textarea",
-    name: "desc",
+    name: "description",
   },
 ];
 export const details_inputs = [

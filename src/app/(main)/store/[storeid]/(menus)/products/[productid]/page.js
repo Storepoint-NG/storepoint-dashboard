@@ -4,10 +4,13 @@ import { HistoryOutlined, RightOutlined } from "@ant-design/icons";
 import supabase from "@/supabase";
 import { getLink } from "@/lib";
 import DeleteProduct from "@/components/products/DeleteProduct";
+import Link from "next/link";
+import cn from "classnames";
 
 export default async function ProductPage({ params }) {
   const { productid } = params;
   if (!productid) return;
+
   const { data, error } = await supabase
     .from("products")
     .select("*")
@@ -20,6 +23,22 @@ export default async function ProductPage({ params }) {
   }
 
   const { title, images, quantity, price, created_at } = data;
+
+  const productActions = [
+    {
+      icon: "",
+      text: "Update Product",
+      desc: "Last update 3/12/24",
+      link: `${productid}/update-product`,
+    },
+    { icon: "", text: "Sales History", desc: "Track sales record", link: `#` },
+    {
+      icon: "",
+      text: "Set Reminder",
+      desc: "Update price and inventory reminder",
+      link: "#",
+    },
+  ];
 
   return (
     <main className="p-2 px-3">
@@ -63,28 +82,23 @@ export default async function ProductPage({ params }) {
       </div>
       {/* actions - update product,sales history, set reminder */}
       <div className="flex flex-col gap-y-4 mt-5">
-        {[
-          { icon: "", text: "Update Product", desc: "Last update 3/12/24" },
-          { icon: "", text: "Sales History", desc: "Track sales record" },
-          {
-            icon: "",
-            text: "Set Reminder",
-            desc: "Update price and inventory reminder",
-          },
-        ].map(({ icon, text, desc }) => (
-          <div
+        {productActions.map(({ icon, text, desc, link }) => (
+          <Link
             key={text}
-            className="flex items-center justify-between border-2 border-blue-200 bg-gray-50 p-2 text-black/80"
+            href={link}
+            className={cn(link === "#" && "opacity-50")}
           >
-            <div className="flex gap-3 items-center">
-              <HistoryOutlined className="text-xl" />
-              <div>
-                <h4 className="font-semibold">{text}</h4>
-                <p className="text-sm">{desc}</p>
+            <div className="flex items-center justify-between border-2 border-blue-200 bg-gray-50 p-2 text-black/80">
+              <div className="flex gap-3 items-center">
+                <HistoryOutlined className="text-xl" />
+                <div>
+                  <h4 className="font-semibold">{text}</h4>
+                  <p className="text-sm">{desc}</p>
+                </div>
               </div>
+              <RightOutlined />
             </div>
-            <RightOutlined />
-          </div>
+          </Link>
         ))}
       </div>
 

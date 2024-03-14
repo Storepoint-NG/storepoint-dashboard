@@ -12,7 +12,7 @@ export default function ProductOverview({ total, storeid }) {
         </p>
       </div>
       <Link
-        href={`/store/${storeid}/products/create`}
+        href={`/store/${storeid}/products/create-product`}
         className="rounded-full flex items-center justify-center gap-3 w-full sm:w-fit sm:px-4 text-white p-3 px-3 bg-purple-700 font-semibold text-center"
       >
         <PlusOutlined />
