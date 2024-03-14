@@ -24,6 +24,7 @@ export default function DeleteProduct({ productid }) {
     }
     toast.success("Product deleted");
     router.push(`/store/${storeid}/products`);
+    router.refresh();
   }
 
   return (
