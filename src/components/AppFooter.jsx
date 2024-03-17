@@ -68,7 +68,7 @@ const AppFooter = () => {
                 +880 768 473 4978
               </a>
               <a
-                href="#"
+                href="mailto:info@storepoint.com"
                 className="text-gray-600 transition-colors duration-300 hover:text-indigo-500  dark:text-gray-300 dark:hover:text-blue-400"
               >
                 info@storepoint.com
@@ -88,7 +88,7 @@ const AppFooter = () => {
           </a> */}
 
           <p className="mt-4 text-sm text-gray-500 dark:text-gray-300 sm:mt-0">
-            © Copyright 2021. All Rights Reserved.
+            © Copyright 2024. All Rights Reserved.
           </p>
         </div>
       </div>

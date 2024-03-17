@@ -19,25 +19,25 @@ const Header = () => {
       <div className="items-center justify-between hidden gap-12 text-black md:flex">
         <a
           className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
+          href="#"
         >
           Product
         </a>
         <a
           className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
+          href="#"
         >
           Features
         </a>
         <a
           className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
+          href="#"
         >
           Pricing
         </a>
         <a
           className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-          href="javascript:void(0)"
+          href="#"
         >
           Company
         </a>
@@ -109,25 +109,25 @@ const Header = () => {
         <div className="absolute  flex md:hidden transition-all duration-300 ease-in-out flex-col items-start shadow-main justify-center w-full gap-3 overflow-hidden bg-white py-4 px-4 rounded-2xl max-h-64 top-full">
           <a
             className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-            href="javascript:void(0)"
+            href="#"
           >
             Product
           </a>
           <a
             className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-            href="javascript:void(0)"
+            href="#"
           >
             Features
           </a>
           <a
             className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-            href="javascript:void(0)"
+            href="#"
           >
             Pricing
           </a>
           <a
             className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900"
-            href="javascript:void(0)"
+            href="#"
           >
             Company
           </a>
