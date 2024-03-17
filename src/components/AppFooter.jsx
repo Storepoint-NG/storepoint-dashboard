@@ -62,10 +62,10 @@ const AppFooter = () => {
 
             <div className="mt-5 flex flex-col items-start space-y-2">
               <a
-                href="#"
+                href="tel:08164475065"
                 className="text-gray-600 transition-colors duration-300 hover:text-indigo-500  dark:text-gray-300 dark:hover:text-blue-400"
               >
-                +880 768 473 4978
+                +234 816 447 5065
               </a>
               <a
                 href="mailto:info@storepoint.com"
