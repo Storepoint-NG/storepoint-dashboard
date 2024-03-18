@@ -3,6 +3,7 @@ import LoginInput from "@/components/LoginInput";
 import { signInWithEmail } from "@/constant/utils";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
