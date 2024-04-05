@@ -16,7 +16,7 @@ const ResetComp = () => {
   const email_input = {
     name: "email",
     type: "email",
-    placeholder: "Type your email address",
+    placeholder: "Type registered email address",
     label: "Registered Email address",
   };
 

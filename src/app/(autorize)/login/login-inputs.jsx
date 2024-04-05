@@ -11,13 +11,13 @@ const LoginInput = ({
   handleChange,
 }) => {
   return (
-    <div className="flex flex-col gap-2 flex-1">
-      <Label className="pl-1 font-semibold" htmlFor={name}>
+    <div className="flex flex-col gap-2 flex-1 ">
+      <Label className="pl-1 font-semibold hidden" htmlFor={name}>
         {label}
       </Label>
 
       <Input
-        className="focus:ring-blue-500 shadow-sm"
+        className="focus:ring-blue-500 shadow-sm placeholder:font-bold"
         onChange={handleChange}
         type={type}
         name={name}
