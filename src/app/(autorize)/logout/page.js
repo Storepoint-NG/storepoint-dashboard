@@ -11,7 +11,7 @@ function LogOut() {
     supabase.auth.signOut().then(() => {
       router.replace("/login");
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return <div></div>;
 }
 

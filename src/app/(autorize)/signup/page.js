@@ -1,6 +1,6 @@
 "use client";
 import LoginInput from "@/components/LoginInput";
-import { signup_details } from "@/constant";
+// import { signup_details } from "@/constant";
 import { signUpNewUser } from "@/constant/utils";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -20,12 +20,13 @@ function Signup() {
     number: "",
     confirmPassword: "",
   });
+  const signup_details = []; // has changed
 
   useEffect(() => {
     if (user) {
       router.push("/");
     }
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });

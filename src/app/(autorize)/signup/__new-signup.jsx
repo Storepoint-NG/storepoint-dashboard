@@ -43,6 +43,7 @@ const SignupComp = () => {
         <div className="flex gap-2 w-full">
           {signup_details_1.map((signup_detail) => (
             <LoginInput
+              key={signup_detail.name}
               {...signup_detail}
               handleChange={handleChange}
               value={form[signup_detail.name]}
@@ -51,6 +52,7 @@ const SignupComp = () => {
         </div>
         {signup_details_2.map((signup_detail) => (
           <LoginInput
+            key={signup_detail.name}
             {...signup_detail}
             handleChange={handleChange}
             value={form[signup_detail.name]}

@@ -24,7 +24,7 @@ const MoreOptions = () => {
 
       <div className="flex flex-col gap-3">
         {[0, 1, 2].map((item) => (
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center" key={item}>
             <div className="flex gap-3 items-center">
               <ProfileFilled />
               <p>Manage Account</p>

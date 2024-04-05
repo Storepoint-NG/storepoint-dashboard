@@ -45,6 +45,7 @@ const LoginComp = () => {
       <div className="w-full flex flex-col gap-5">
         {login_inputs.map((login_input) => (
           <LoginInput
+            key={login_input.name}
             {...login_input}
             handleChange={handleChange}
             value={form[login_input.name]}

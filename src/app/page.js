@@ -36,7 +36,7 @@ export default function Home() {
     };
 
     fetchShops();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="py-7 pt-12 px-5">

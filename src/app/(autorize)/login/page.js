@@ -22,7 +22,7 @@ function Login() {
     if (user) {
       router.push("/");
     }
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
   function handleSubmit(e) {
     e.preventDefault();
     if (form.email && form.password) {
