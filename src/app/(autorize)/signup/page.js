@@ -7,6 +7,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import SignupComp from "./__new-signup";
 
 function Signup() {
   const supabase = createClientComponentClient();
@@ -77,4 +78,6 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignupComp;
+
+// export default Signup;

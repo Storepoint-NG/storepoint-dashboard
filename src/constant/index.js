@@ -97,22 +97,25 @@ export const create_store_inputs = [
   { name: "location", placeholder: "E.g Yaba, Lagos", label: "Location" },
 ];
 
-export const signup_details = [
+export const signup_details_1 = [
   {
     type: "text",
-    label: "First Name and Last Name",
-    placeholder: "Type your firstname and lastname",
+    label: "First Name",
+    placeholder: "firstname",
     name: "name",
   },
   {
     type: "text",
-    label: "Phone Number",
-    placeholder: "8164475065",
-    name: "number",
+    label: "Last Name",
+    placeholder: "Last name",
+    name: "lastname",
   },
+];
+
+export const signup_details_2 = [
   {
     type: "text",
-    label: "Your Business Email",
+    label: "Email",
     placeholder: "Type your email address",
     name: "email",
   },
@@ -122,13 +125,6 @@ export const signup_details = [
     isPassword: true,
     placeholder: "Enter a strong password",
     name: "password",
-  },
-  {
-    type: "password",
-    label: "Confirm Password",
-    isPassword: true,
-    placeholder: "Enter password again",
-    name: "confirmPassword",
   },
 ];
 

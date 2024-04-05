@@ -7,6 +7,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import LoginComp from "./__new-login";
 
 function Login() {
   const supabase = createClientComponentClient();
@@ -81,4 +82,5 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginComp;
+// export default Login;
