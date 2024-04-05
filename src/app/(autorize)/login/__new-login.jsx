@@ -56,7 +56,9 @@ const LoginComp = () => {
         <Button className="w-full hover:bg-blue-500 transition-colors duration-150">
           Log In
         </Button>
-        <p className="text-blue-500 cursor-pointer">Forgot Your Password?</p>
+        <Link href="reset-password" className="text-blue-500 cursor-pointer">
+          Forgot Your Password?
+        </Link>
         <hr className="w-full border border-gray-100" />
         <Link href="/signup">
           Don&apos;t have an account?{" "}
