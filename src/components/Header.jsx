@@ -33,7 +33,7 @@ export default function Header() {
       <div className="flex gap-3 items-center">
         <BellOutlined style={{ fontSize: "larger" }} />
         <Link
-          href="/"
+          href="/store"
           className="p-2 text-xs rounded-full bg-gree-500 border border-purple-200 text-purple-500"
         >
           MS

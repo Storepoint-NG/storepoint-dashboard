@@ -20,13 +20,23 @@ export default function AddProduct() {
   const [form, setForm] = useState({
     title: "",
     category: "",
-    desc: "",
+    description: "",
     price: "",
     quantity: "",
   });
   const [images, setImages] = useState([]);
 
+  const isValidPrice = (inputValue) => {
+    const regex = /^[0-9.]*$/;
+    if (!regex.test(inputValue)) return false;
+    return true;
+  };
+
   const handleChange = (e) => {
+    if (e.target.name === "price") {
+      if (!isValidPrice(e.target.value)) return;
+    }
+
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -43,7 +53,7 @@ export default function AddProduct() {
     // Send to supbase
     const { error } = await supabase.from("products").insert({
       title: form.title,
-      description: form.desc,
+      description: form.description,
       category: form.category,
       price: form.price,
       quantity: form.quantity,
@@ -60,8 +70,9 @@ export default function AddProduct() {
 
     // successful
     toast.success("Product created successfully 🎉");
-    // send to product page
+    // send to products page
     router.push(`/store/${storeid}/products`);
+    router.refresh();
   };
 
   return (

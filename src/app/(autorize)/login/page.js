@@ -20,7 +20,7 @@ function Login() {
 
   useEffect(() => {
     if (user) {
-      router.push("/");
+      router.push("/store");
     }
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
   function handleSubmit(e) {
