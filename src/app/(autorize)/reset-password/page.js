@@ -1,6 +1,8 @@
+"use client";
 import LoginInput from "@/components/LoginInput";
 import Link from "next/link";
 import React from "react";
+import ResetComp from "./__new-reset";
 
 function ResetPassword() {
   return (
@@ -26,4 +28,5 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+// export default ResetPassword;
+export default ResetComp;

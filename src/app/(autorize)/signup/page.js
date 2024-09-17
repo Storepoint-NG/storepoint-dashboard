@@ -1,12 +1,13 @@
 "use client";
 import LoginInput from "@/components/LoginInput";
-import { signup_details } from "@/constant";
+// import { signup_details } from "@/constant";
 import { signUpNewUser } from "@/constant/utils";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import SignupComp from "./__new-signup";
 
 function Signup() {
   const supabase = createClientComponentClient();
@@ -19,12 +20,13 @@ function Signup() {
     number: "",
     confirmPassword: "",
   });
+  const signup_details = []; // has changed
 
   useEffect(() => {
     if (user) {
       router.push("/store");
     }
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -77,4 +79,6 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignupComp;
+
+// export default Signup;

@@ -3,9 +3,11 @@ import LoginInput from "@/components/LoginInput";
 import { signInWithEmail } from "@/constant/utils";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import LoginComp from "./__new-login";
 
 function Login() {
   const supabase = createClientComponentClient();
@@ -20,7 +22,7 @@ function Login() {
     if (user) {
       router.push("/store");
     }
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
   function handleSubmit(e) {
     e.preventDefault();
     if (form.email && form.password) {
@@ -80,4 +82,5 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginComp;
+// export default Login;
